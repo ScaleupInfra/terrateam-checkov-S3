@@ -21,6 +21,6 @@ num_creates[resource_type] = num {
  
 deny[msg] {
     num_resources := num_creates["aws_s3_bucket"]
-    num_resources > 1
+    num_resources > 0
     msg := "more then 1 Resource 'aws_s3_bucket' detected in Terraform plan file. Denied."
 }
