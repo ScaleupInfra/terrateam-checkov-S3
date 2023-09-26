@@ -1,6 +1,6 @@
 package main
  
-resource_types = {"null_resource"}
+resource_types = {"aws_s3_bucket"}
  
 resources[resource_type] = all {
     some resource_type
@@ -20,7 +20,7 @@ num_creates[resource_type] = num {
 }
  
 deny[msg] {
-    num_resources := num_creates["null_resource"]
-    num_resources > 0
-    msg := "Resource 'null_resource' detected in Terraform plan file. Denied."
+    num_resources := num_creates["aws_s3_bucket"]
+    num_resources > 1
+    msg := "more then 1 Resource 'aws_s3_bucket' detected in Terraform plan file. Denied."
 }
