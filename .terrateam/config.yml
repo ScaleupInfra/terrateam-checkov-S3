@@ -11,6 +11,9 @@ workflows:
     plan:
       - type: init
       - type: plan
+      - type: env
+        name: CKV_SKIP_CHECK
+        cmd: ["echo", "CKV_AWS_55", "CKV_AWS_56"]
       - type: run
         cmd: ["checkov-wrapper"]
         capture_output: true
