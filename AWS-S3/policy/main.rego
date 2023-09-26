@@ -1,26 +1,33 @@
 package main
- 
-resource_types = {"null_resource"}
- 
-resources[resource_type] = all {
-    some resource_type
-    resource_types[resource_type]
-    all := [name |
-        name:= input.resource_changes[_]
-        name.type == resource_type
-    ]
+
+resource_changes[rc] {
+  some resource_type
+  resource_type = "aws_s3_bucket"
+  rc = tfplan.resource_changes[_]
+  rc.type == resource_type
+  rc.change.actions[_] == "create"
+  rc.change.after.bucket != "sidvjsingh"
 }
- 
-num_creates[resource_type] = num {
-    some resource_type
-    resource_types[resource_type]
-    all := resources[resource_type]
-    creates := [res |  res:= all[_]; res.change.actions[_] == "create"]
-    num := count(creates)
-}
- 
+
 deny[msg] {
-    num_resources := num_creates["null_resource"]
-    num_resources > 0
-    msg := "Resource 'null_resource' detected in Terraform plan file. Denied."
+  some rc
+  rc = resource_changes[_]
+  msg := "Bucket name must be 'sidvjsingh'"
 }
+
+# result := {msg | deny[msg]}
+
+# allow = "pass" {
+#   count(resource_changes) == 0
+# } else = "fail" {
+#   count(resource_changes) > 0
+# }
+
+# main = {
+#   "result": allow,
+#   "violations": {msg | deny[msg]}
+# }
+
+# output = {
+#   "result" : main
+# }
