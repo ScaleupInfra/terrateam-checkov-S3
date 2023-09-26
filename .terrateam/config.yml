@@ -5,11 +5,20 @@
 #         provider: aws
 #         role_arn: "arn:aws:iam::104300641251:role/terrateam"
 
+# workflows:
+#   - tag_query: ""
+#     plan:
+#       - type: init
+#       - type: plan
+#       - type: run
+#         cmd: ["checkov-wrapper"]
+#         capture_output: true
+
 workflows:
   - tag_query: ""
     plan:
       - type: init
       - type: plan
       - type: run
-        cmd: ["checkov-wrapper"]
+        cmd: ["conftest-wrapper"]
         capture_output: true
