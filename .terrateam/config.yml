@@ -1,0 +1,15 @@
+hooks:
+  all:
+    pre:
+      - type: oidc
+        provider: aws
+        role_arn: "arn:aws:iam::834277767436:role/terrateam"
+
+workflows:
+  - tag_query: ""
+    plan:
+      - type: init
+      - type: plan
+      - type: run
+        cmd: ["checkov-wrapper"]
+        capture_output: true
