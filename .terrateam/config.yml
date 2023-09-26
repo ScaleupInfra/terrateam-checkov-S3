@@ -5,6 +5,7 @@
 #         provider: aws
 #         role_arn: "arn:aws:iam::104300641251:role/terrateam"
 
+# For Checkov checks
 workflows:
   - tag_query: ""
     plan:
@@ -13,11 +14,15 @@ workflows:
       - type: run
         cmd: ["checkov-wrapper"]
         capture_output: true
+# For OPA policy checks
 # workflows:
 #   - tag_query: ""
 #     plan:
 #       - type: init
 #       - type: plan
+#       - type: env
+#         name: CHECKOV_POLICIES
+#         cmd: ["echo", "$TERRATEAM_ROOT/AWS-S3/policy/"]
 #       - type: run
 #         cmd: ["conftest-wrapper"]
 #         capture_output: true
