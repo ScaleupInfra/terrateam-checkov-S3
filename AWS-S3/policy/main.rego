@@ -8,13 +8,13 @@ resource_changes[rc] {
   rc = tfplan.resource_changes[_]
   rc.type == resource_type
   rc.change.actions[_] == "create"
-  rc.change.after.bucket != "sidvjsingh"
+  rc.change.after.bucket != "infrasity"
 }
 
 deny[msg] {
   some rc
   rc = resource_changes[_]
-  msg = "Bucket name must be 'sidvjsingh'"
+  msg = "Bucket name must be 'infrasity'"
 }
 
 result := {msg | deny[msg]}
