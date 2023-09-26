@@ -21,7 +21,7 @@ workflows:
       - type: plan
       - type: env
         name: CHECKOV_POLICIES
-        cmd: ["echo", "$TERRATEAM_ROOT/aws/policies/iam/"]
+        cmd: ["echo", "$TERRATEAM_ROOT/AWS-S3/policy/"]
       - type: run
         cmd: ["conftest-wrapper"]
         capture_output: true
