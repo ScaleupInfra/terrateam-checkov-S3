@@ -3,7 +3,7 @@ hooks:
     pre:
       - type: oidc
         provider: aws
-        role_arn: "arn:aws:iam::680054654436:role/terrateam"
+        role_arn: "arn:aws:iam::104300641251:role/terrateam"
 
 workflows:
   - tag_query: ""

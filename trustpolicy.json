@@ -1,20 +1,18 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::680054654436:oidc-provider/token.actions.githubusercontent.com"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringLike": {
-          "token.actions.githubusercontent.com:sub": "repo:136685390/*"
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Effect": "Allow",
+        "Principal": {
+            "Federated": "arn:aws:iam::104300641251:oidc-provider/token.actions.githubusercontent.com"
         },
-        "StringEquals": {
-          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {
+            "StringLike": {
+                "token.actions.githubusercontent.com:sub": "repo:77890467/*"
+            },
+            "StringEquals": {
+                "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+            }
         }
-      }
-    }
-  ]
+    }]
 }
