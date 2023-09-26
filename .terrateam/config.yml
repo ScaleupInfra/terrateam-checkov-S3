@@ -12,9 +12,10 @@ workflows:
       - type: init
       - type: plan
       - type: env
-        name: CKV_SKIP_CHECK_CKV_AWS
+        name: CKV_SKIP_CHECK
         cmd: ["echo", "CKV_AWS*"]
-        name: CKV_SKIP_CHECK_CKV2_AWS
+      - type: env
+        name: CKV_SKIP_CHECK
         cmd: ["echo", "CKV2_AWS*"]
       - type: run
         cmd: ["checkov-wrapper"]
