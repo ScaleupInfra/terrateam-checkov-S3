@@ -5,6 +5,6 @@ resource "aws_s3_bucket" "infraSity" {
     enabled = true
   }
   tags ={
-    name = "S3 bucket"
+    name = "S3 bucket 1"
   }
 }
