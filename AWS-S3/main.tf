@@ -16,6 +16,6 @@ resource "aws_s3_bucket" "sidvjsingh" {
     enabled = true
   }
   tags ={
-    name = "S3 bucket"
+    name = "S3 bucket2"
   }
 }
