@@ -1,9 +1,9 @@
-# hooks:
-#   all:
-#     pre:
-#       - type: oidc
-#         provider: aws
-#         role_arn: "arn:aws:iam::104300641251:role/terrateam"
+hooks:
+  all:
+    pre:
+      - type: oidc
+        provider: aws
+        role_arn: "arn:aws:iam::104300641251:role/terrateam"
 
 # For OPA policy checks
 workflows:
@@ -18,14 +18,14 @@ workflows:
         cmd: ["conftest-wrapper"]
         capture_output: true
 # For Checkov checks
-# workflows:
-#   - tag_query: ""
-#     plan:
-#       - type: init
-#       - type: plan
-#       - type: env
-#         name: CKV_SKIP_CHECK
-#         cmd: ["echo", "CKV_AWS*,CKV2_AWS*"]
-#       - type: run
-#         cmd: ["checkov-wrapper"]
-#         capture_output: true
+workflows:
+  - tag_query: ""
+    plan:
+      - type: init
+      - type: plan
+      - type: env
+        name: CKV_SKIP_CHECK
+        cmd: ["echo", "CKV_AWS*,CKV2_AWS*"]
+      - type: run
+        cmd: ["checkov-wrapper"]
+        capture_output: true
