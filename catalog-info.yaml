@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "terrateam-checkov-S3"
+  description: "app to test backstage for existing repo"
+  annotations:
+    github.com/project-slug: ScaleupInfra/terrateam-checkov-S3
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental
